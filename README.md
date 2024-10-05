@@ -16,7 +16,7 @@ The Chimoney TypeScript SDK provides a strongly-typed interface for integrating 
 
 
 ### Getting Started
-1. Setting up Chimoney TypeScript SDK
+##  Setting up Chimoney TypeScript SDK
 To get started with the SDK:
 
 1. Clone the Chimoney test project repository:
@@ -38,7 +38,7 @@ To get started with the SDK:
 
 
 
-2. Running Chimoney Test Project
+##  Running Chimoney Test Project
 To test or integrate the SDK with your project:
 
 1. Clone the Chimoney test project repository:
