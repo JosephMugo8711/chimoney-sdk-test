@@ -42,37 +42,31 @@ export class Base {
         return this.apiKey;
     }
 
-    // Generic API request method
     protected async apiRequest(endpoint: string, options: RequestInit = {}): Promise<any> {
+        console.log(`Making request to: ${this.getBaseUrl()}/${endpoint}`);
+        console.log(`Using API key: ${this.getApiKey()}`);
         try {
-            const response = await fetch(`${process.env.BASE_URL as string}/${endpoint}`, {
+            const response = await fetch(`${this.getBaseUrl()}/${endpoint}`, {
                 ...options,
                 headers: {
                     ...options.headers,
-                    'Authorization': `Bearer ${process.env.API_KEY as string}`,
+                    'Authorization': `Bearer ${this.getApiKey()}`, // Change this to use this.getApiKey()
                     'Content-Type': 'application/json',
                 },
             });
-            // log this.getBaseUrl and this. getApikey
-            // initiates the function
-            // console.log(`getApikey: ${this.getApiKey()}`)
-            // console.log(`getBaseurl: ${this.getBaseUrl()}`)
-
+    
             if (!response.ok) {
-                const errorMessage = await response.text(); // Capture error message from response
+                const errorMessage = await response.text();
                 throw new Error(`API request failed: ${response.statusText} - ${errorMessage}`);
             }
-
-
-
-
-            return await response.json(); // Return parsed JSON response
+    
+            return await response.json();
         } catch (error) {
             console.error('API Request Error:', error);
-            throw error; // Re-throw the error after logging
-
+            throw error;
         }
     }
+    
 
     // POST request method
     protected async post(endpoint: string, data: any): Promise<any> {
