@@ -1,12 +1,17 @@
+// interacting with the chimoney's API
+
+// Package to load environment variables from a .env file into process.env
+// 
 import dotenv from 'dotenv';
 
-// Load environment variables from .env file
+// Load environment variables when the SDK is initialized
 dotenv.config();
 
-// Define the Config type
+// defined to represent the shape the shape of the configuration object used when initializing the SDK
+
 type Config = {
-    apikey: string;
-    baseUrl?: string;
+    apikey: string; // required string for the API key used to authenticate requests
+    baseUrl?: string;  // optional string for the base URL of the API (variy depending on the environment e.g production vs development)
 };
 
 export class Base {

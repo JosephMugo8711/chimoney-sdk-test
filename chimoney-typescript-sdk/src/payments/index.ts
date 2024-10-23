@@ -9,7 +9,7 @@ import {
 export class Payments extends Base {
     // Method for Chimoney Payout
     async createChimoneyPayout(payoutData: ChimoneyPayout): Promise<any> {
-        return await this.paymentPost('payouts/chimoney-payout', payoutData);
+        return await this.paymentPost('payouts/chimoney', payoutData);
     }
 
     // Generic method to handle different payout types
